@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Fluxo de O.S – SAC Suporte G3",
   "short_name": "Fluxo de O.S",
-  "version": "1.14.0",
+  "version": "1.14.1",
   "description": "Consulta rápida: qual Ordem de Serviço abrir em seguida, conforme a situação do cliente.",
   "action": {
     "default_popup": "popup.html",
