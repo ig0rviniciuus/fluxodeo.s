@@ -39,7 +39,7 @@ function decidirProximaOS({ tipo, mascara, dias, cancelamento, problema, prevent
 
   // Regra 1 – ativação há até 2 dias
   if (tipo === "instalacao" && ate(2))
-    return r("ativacao", null, "Ativação há até 2 dias.");
+    return r("ativacao", null, "Ativação há até 3 dias.");
 
   // Exceção 3 – retenção volta para retenção
   if (tipo === "retencao")
