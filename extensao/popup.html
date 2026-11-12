@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Fluxo de O.S</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="topo">
+    <h1>Qual O.S abrir agora?</h1>
+    <nav class="abas" role="tablist">
+      <button role="tab" class="aba" data-aba="calc" aria-selected="true">Descobrir O.S</button>
+      <button role="tab" class="aba" data-aba="fluxo" aria-selected="false">Fluxo</button>
+      <button role="tab" class="aba" data-aba="masc" aria-selected="false">Tipos de O.S</button>
+      <button role="tab" class="aba" data-aba="ajuda" aria-selected="false">Ajuda</button>
+    </nav>
+  </header>
+
+  <!-- Calculadora -->
+  <section class="painel" id="painel-calc">
+    <div class="boas-vindas" id="boas-vindas" hidden>
+      <p>Responda as perguntas e veja qual O.S abrir.</p>
+      <button type="button" class="link" id="fechar-boas-vindas">Entendi, não mostrar de novo</button>
+    </div>
+
+    <form id="form" class="form" novalidate>
+      <div class="passo" id="passo-prev">
+        <span class="num">1</span>
+        <fieldset class="campo">
+          <legend>Cliente inativo ou fora do endereço?</legend>
+          <div class="opcoes">
+            <label class="radio"><input type="radio" name="inativo" value="nao" checked><span>Não</span></label>
+            <label class="radio"><input type="radio" name="inativo" value="sim"><span>Sim</span></label>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="passo reinicio" id="passo-prev-2" hidden>
+        <span class="num">2</span>
+        <fieldset class="campo">
+          <legend>O que foi identificado?</legend>
+          <label class="radio"><input type="radio" name="prev" value="los"><span>LOS<small>Alarme no OLTZ, vídeo ou relato do cliente</small></span></label>
+          <label class="radio"><input type="radio" name="prev" value="pon"><span>PON piscando<small>Vídeo ou relato do cliente</small></span></label>
+          <label class="radio"><input type="radio" name="prev" value="outros"><span>Nenhum<small>Sem vídeo e sem relato</small></span></label>
+        </fieldset>
+      </div>
+
+      <div class="passo hist" id="passo-1">
+        <span class="num">1</span>
+        <div class="campo">
+          <label for="f-tipo">Qual foi a última O.S do cliente?</label>
+          <select id="f-tipo"></select>
+          <p class="dica">Configuração feita pelo SAC, sem O.S? Escolha “Configuração no SAC”.</p>
+        </div>
+      </div>
+
+      <div class="passo hist" id="passo-masc" hidden>
+        <span class="num">2</span>
+        <div class="campo">
+          <label for="f-masc">Qual a máscara dela?</label>
+          <select id="f-masc"></select>
+          <p class="dica">Não achou? Deixe “Outros”.</p>
+        </div>
+      </div>
+
+      <div class="passo hist" id="passo-data">
+        <span class="num">2</span>
+        <div class="campo">
+          <label for="f-data">Quando foi essa O.S?</label>
+          <input id="f-data" type="date">
+          <p class="prazo" id="prazo" hidden></p>
+        </div>
+      </div>
+
+      <div class="passo reinicio hist" id="bloco-problema" hidden>
+        <span class="num">3</span>
+        <div class="campo">
+          <label for="f-problema">Qual o problema agora?</label>
+          <select id="f-problema"></select>
+        </div>
+      </div>
+
+      <div class="passo">
+        <span class="num">3</span>
+        <fieldset class="campo">
+          <legend>Falou em cancelar?</legend>
+          <label class="radio"><input type="radio" name="canc" value="nao" checked><span>Não</span></label>
+          <label class="radio"><input type="radio" name="canc" value="indireto"><span>Deu a entender<small>Ex.: “vou trocar de provedor”</small></span></label>
+          <label class="radio"><input type="radio" name="canc" value="direto"><span>Pediu para cancelar</span></label>
+        </fieldset>
+      </div>
+
+      <div class="acoes">
+        <button type="submit" class="btn">Ver O.S</button>
+        <button type="reset" class="btn sec">Limpar</button>
+      </div>
+      <p class="erro" id="erro" role="alert" hidden></p>
+    </form>
+    <div class="resultado" id="resultado" hidden></div>
+  </section>
+
+  <!-- Fluxo -->
+  <section class="painel" id="painel-fluxo" hidden>
+    <p class="regra-geral" id="regra-geral"></p>
+    <p class="intro">Situação do cliente e a O.S a abrir. Clique para copiar.</p>
+    <div class="ferramentas">
+      <input id="busca" type="search" placeholder="Buscar: rechamada, cancelamento, mesh…" autocomplete="off" aria-label="Buscar situação">
+      <div class="filtros" id="filtros" role="group" aria-label="Filtrar pela próxima O.S"></div>
+    </div>
+    <ol class="lista" id="lista"></ol>
+    <p class="vazio" id="vazio" hidden>Nenhuma situação encontrada. Tente outra palavra ou limpe o filtro.</p>
+  </section>
+
+  <!-- Tipos de O.S -->
+  <section class="painel" id="painel-masc" hidden>
+    <p class="intro">Clique na máscara para copiar com o modelo da descrição.</p>
+    <div id="mascaras"></div>
+  </section>
+
+  <!-- Ajuda -->
+  <section class="painel" id="painel-ajuda" hidden>
+    <div class="card-ajuda">
+      <h2>Como usar</h2>
+      <ol class="passos-ajuda">
+        <li>Abra o histórico de O.S do cliente.</li>
+        <li>Responda as perguntas da aba <em>Descobrir O.S</em>.</li>
+        <li>Clique em <em>Ver O.S</em>.</li>
+        <li>Copie a máscara, cole na O.S e preencha.</li>
+      </ol>
+    </div>
+    <div class="card-ajuda">
+      <h2>Palavras que você vai ouvir</h2>
+      <dl id="glossario"></dl>
+    </div>
+    <div class="card-ajuda" id="sugestao">
+      <h2>Falta algum caso? Sugira</h2>
+      <form id="form-sug" class="form-sug" novalidate>
+        <label for="s-tipo">Tipo</label>
+        <select id="s-tipo">
+          <option>Procedimento que não está na extensão</option>
+          <option>Sugestão de melhoria</option>
+          <option>Resultado errado</option>
+        </select>
+        <label for="s-texto">Descreva</label>
+        <textarea id="s-texto" rows="4" placeholder="Ex.: cliente com O.S X há 10 dias deveria ir para Y."></textarea>
+        <label for="s-nome">Seu nome <span class="opc">(opcional)</span></label>
+        <input id="s-nome" type="text" autocomplete="name">
+        <p class="dica">Não coloque dados de clientes (CPF, telefone, endereço).</p>
+        <button type="submit" class="btn">Enviar sugestão</button>
+        <p class="sug-status" id="s-status" role="status" hidden></p>
+      </form>
+    </div>
+    <div class="card-ajuda">
+      <h2>Ficou com dúvida?</h2>
+      <p>Caso não se encaixe ou o resultado pareça estranho? Fale com seu supervisor antes de abrir a O.S.</p>
+    </div>
+  </section>
+
+  <footer class="rodape">
+    Clique na O.S ou na máscara para copiar · <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>O</kbd> abre a extensão
+  </footer>
+  <div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+
+  <script src="config.js"></script>
+  <script src="data.js"></script>
+  <script src="regras.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

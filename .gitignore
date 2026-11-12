@@ -1,0 +1,6 @@
+# Nunca envie a chave privada para o repositório
+*.pem
+*.crx
+build/
+site/
+node_modules/
