@@ -1,0 +1,58 @@
+name: Publicar extensão
+
+on:
+  push:
+    branches: [main]
+    paths: ["extensao/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Preparar chave de assinatura
+        env:
+          CRX_PRIVATE_KEY: ${{ secrets.CRX_PRIVATE_KEY }}
+        run: |
+          if [ -z "$CRX_PRIVATE_KEY" ]; then
+            echo "::error::Cadastre o segredo CRX_PRIVATE_KEY (veja o README, passo 2)."
+            exit 1
+          fi
+          printf '%s\n' "$CRX_PRIVATE_KEY" > chave.pem
+
+      - name: Montar, assinar e gerar arquivos de atualização
+        env:
+          BASE_URL: ${{ steps.pages.outputs.base_url }}
+        run: node scripts/publicar.js
+
+      - name: Apagar chave
+        if: always()
+        run: rm -f chave.pem
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - id: deploy
+        uses: actions/deploy-pages@v4
