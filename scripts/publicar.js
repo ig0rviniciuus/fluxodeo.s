@@ -26,8 +26,37 @@ function compararVersao(a, b) {
   return 0;
 }
 
+// Confere o fluxo.json antes de publicar, para não quebrar a extensão dos operadores
+function validarFluxo() {
+  const vm = require("vm");
+  let d;
+  try { d = JSON.parse(fs.readFileSync(path.join(ORIGEM, "fluxo.json"), "utf8")); }
+  catch (e) { falhar("O arquivo extensao/fluxo.json tem erro de formatação (vírgula, aspas ou chave faltando): " + e.message); }
+  const obrig = ["versao", "TIPOS_OS", "TIPOS_SO_ULTIMA", "REGRA_GERAL", "PROBLEMAS", "FLUXO", "AJUDA_TIPOS",
+    "GLOSSARIO", "MODELO_DESCRICAO", "MODELOS_MASCARA", "MODELOS_POR_TIPO", "REGRAS"];
+  obrig.forEach((k) => { if (d[k] === undefined) falhar("fluxo.json: falta o campo " + k + "."); });
+  const tiposOS = Object.keys(d.TIPOS_OS), todos = tiposOS.concat(Object.keys(d.TIPOS_SO_ULTIMA));
+  d.REGRAS.forEach((r, i) => {
+    const nome = "regra " + (r.id || i + 1);
+    if (!r.entao) falhar(nome + ": falta o \"entao\".");
+    if (!r.entao.doProblema && !tiposOS.includes(r.entao.tipo)) falhar(nome + ": tipo de O.S \"" + r.entao.tipo + "\" não existe em TIPOS_OS.");
+    ((r.se && r.se.tipo) || []).forEach((t) => { if (!todos.includes(t)) falhar(nome + ": tipo \"" + t + "\" não existe."); });
+  });
+  d.PROBLEMAS.forEach((p) => { if (!tiposOS.includes(p.tipo)) falhar("Problema \"" + p.nome + "\": tipo \"" + p.tipo + "\" não existe."); });
+  d.FLUXO.forEach((f) => { if (!tiposOS.includes(f.proxima)) falhar("Fluxo \"" + f.situacao + "\": tipo \"" + f.proxima + "\" não existe."); });
+  // Teste de fumaça: roda o motor em todos os tipos e prazos
+  const ctx = vm.createContext({ TIPOS_OS: d.TIPOS_OS, TIPOS_SO_ULTIMA: d.TIPOS_SO_ULTIMA, PROBLEMAS: d.PROBLEMAS, REGRAS: d.REGRAS });
+  vm.runInContext(fs.readFileSync(path.join(ORIGEM, "motor.js"), "utf8") + ";this.f = decidirProximaOS;", ctx);
+  for (const tipo of todos) for (let dias = 0; dias <= 70; dias++) for (const cancelamento of ["nao", "indireto", "direto"]) {
+    const r = ctx.f({ tipo, dias, cancelamento, problema: d.PROBLEMAS[0] && d.PROBLEMAS[0].nome });
+    if (!r.pedirProblema && !tiposOS.includes(r.tipo)) falhar("Resultado inválido para " + tipo + " com " + dias + " dias.");
+  }
+  console.log("fluxo.json válido · versão " + d.versao + " · " + d.REGRAS.length + " regras");
+}
+
 (async () => {
   if (!BASE.startsWith("https://")) falhar("BASE_URL inválida: " + BASE);
+  validarFluxo();
   if (!fs.existsSync(CHAVE)) falhar("chave.pem não encontrada.");
 
   const manifest = JSON.parse(fs.readFileSync(path.join(ORIGEM, "manifest.json"), "utf8"));
@@ -40,7 +69,7 @@ function compararVersao(a, b) {
     if (r.ok) {
       const atual = ((await r.text()).match(/version="([\d.]+)"/) || [])[1];
       if (atual && compararVersao(versao, atual) <= 0)
-        falhar(`A versão no manifest.json (${versao}) precisa ser maior que a publicada (${atual}).`);
+        console.log(`Aviso: a versão da extensão (${versao}) não mudou. As regras do fluxo.json são publicadas mesmo assim.`);
       console.log("Versão publicada atualmente:", atual || "nenhuma");
     } else {
       console.log("Primeira publicação (updates.xml ainda não existe).");
@@ -65,6 +94,9 @@ function compararVersao(a, b) {
     "--appVersion", versao,
     "--crxURL", BASE + "/fluxo-os.crx",
     "--", BUILD], { stdio: "inherit" });
+
+  // Regras, tipos e máscaras lidos pela extensão a cada abertura
+  fs.copyFileSync(path.join(ORIGEM, "fluxo.json"), path.join(SITE, "fluxo.json"));
 
   // ID da extensão (derivado da chave pública)
   const der = crypto.createPublicKey(fs.readFileSync(CHAVE)).export({ type: "spki", format: "der" });

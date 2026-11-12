@@ -1,0 +1,1005 @@
+{
+  "versao": "2026-11-12.1",
+  "TIPOS_OS": {
+    "nivel1": {
+      "nome": "O.S Nível I",
+      "cor": "nivel1",
+      "mascaras": [
+        "Instalou Recente",
+        "Rechamada 60",
+        "Propenso a Cancelamento",
+        "Quedas Constantes",
+        "Sem Conexão",
+        "Oscilação",
+        "Velocidade Não Bate",
+        "Lentidão",
+        "Rechamada",
+        "Rechamada Externo",
+        "Equipamento Descolou",
+        "Sem Acesso Remoto",
+        "Outros - SAC Suporte"
+      ]
+    },
+    "nivel2": {
+      "nome": "O.S Nível II",
+      "cor": "nivel2",
+      "mascaras": [
+        "LOS",
+        "PON Piscando",
+        "Sinal Alto",
+        "Outros - SAC Suporte"
+      ]
+    },
+    "ativacao": {
+      "nome": "Ativação Recente",
+      "cor": "ativacao",
+      "mascaras": [
+        "Quedas Constantes",
+        "Sem Conexão",
+        "Oscilação",
+        "Velocidade Não Bate",
+        "Lentidão",
+        "Equipamento Descolou",
+        "LOS",
+        "PON Piscando",
+        "Sinal Alto",
+        "Outros - SAC Suporte"
+      ]
+    },
+    "retencao": {
+      "nome": "Suporte Retenção",
+      "cor": "retencao",
+      "mascaras": [
+        "Quedas Constantes",
+        "Sem Conexão",
+        "Oscilação",
+        "Velocidade Não Bate",
+        "Lentidão",
+        "Equipamento Descolou",
+        "LOS",
+        "PON Piscando",
+        "Sinal Alto",
+        "Outros - SAC Suporte"
+      ]
+    },
+    "recente": {
+      "nome": "O.S Suporte Recente",
+      "cor": "recente",
+      "mascaras": [
+        "Rechamada Externo - SAC Suporte"
+      ]
+    },
+    "fibrabaixa": {
+      "nome": "Fibra Baixa",
+      "cor": "outros",
+      "mascaras": [
+        "Fibra Baixa - SAC Suporte"
+      ]
+    },
+    "preventiva": {
+      "nome": "O.S Preventiva",
+      "cor": "outros",
+      "mascaras": [
+        "LOS",
+        "PON Piscando",
+        "Outros - SAC Suporte"
+      ]
+    },
+    "conector": {
+      "nome": "Conector Danificado",
+      "cor": "outros",
+      "grupo": "equip",
+      "mascaras": [
+        "Comodato Danificado - SAC Suporte"
+      ]
+    },
+    "trocafonte": {
+      "nome": "Troca de Fonte",
+      "cor": "outros",
+      "grupo": "equip",
+      "mascaras": [
+        "Comodato Danificado - SAC Suporte"
+      ]
+    },
+    "trocaroteador": {
+      "nome": "Troca de Roteador Danificado",
+      "cor": "outros",
+      "grupo": "equip",
+      "mascaras": [
+        "Comodato Danificado - SAC Suporte"
+      ]
+    },
+    "trocaonu": {
+      "nome": "Troca de ONU Danificada",
+      "cor": "outros",
+      "grupo": "equip",
+      "mascaras": [
+        "Comodato Danificado - SAC Suporte"
+      ]
+    },
+    "trocaequip": {
+      "nome": "Troca de Equipamentos",
+      "cor": "outros",
+      "grupo": "equip",
+      "mascaras": [
+        "Comodato Danificado - SAC Suporte"
+      ]
+    },
+    "fibradanificada": {
+      "nome": "Fibra Danificada",
+      "cor": "outros",
+      "mascaras": [
+        "Fibra Danificada - SAC Suporte"
+      ]
+    },
+    "fiscal": {
+      "nome": "Fiscalização",
+      "cor": "fiscal",
+      "mascaras": [
+        "Fiscalização - SAC Suporte"
+      ]
+    },
+    "mesh": {
+      "nome": "Suporte Rede Mesh",
+      "cor": "mesh",
+      "mascaras": [
+        "Suporte Rede Mesh - SAC Suporte"
+      ]
+    }
+  },
+  "TIPOS_SO_ULTIMA": {
+    "configsac": {
+      "nome": "Configuração no SAC"
+    },
+    "instalacao": {
+      "nome": "Ativação / Instalação"
+    },
+    "mudancaendereco": {
+      "nome": "Mudança de Endereço"
+    },
+    "mudancalocal": {
+      "nome": "Mudança de Local"
+    }
+  },
+  "REGRA_GERAL": "o fluxo vale até 60 dias da última O.S. Depois disso, recomeça pelo problema atual.",
+  "PROBLEMAS": [
+    {
+      "nome": "Quedas constantes",
+      "tipo": "nivel1",
+      "mascara": "Quedas Constantes"
+    },
+    {
+      "nome": "Sem conexão",
+      "tipo": "nivel1",
+      "mascara": "Sem Conexão"
+    },
+    {
+      "nome": "Oscilação",
+      "tipo": "nivel1",
+      "mascara": "Oscilação"
+    },
+    {
+      "nome": "Velocidade não bate",
+      "tipo": "nivel1",
+      "mascara": "Velocidade Não Bate"
+    },
+    {
+      "nome": "Lentidão",
+      "tipo": "nivel1",
+      "mascara": "Lentidão"
+    },
+    {
+      "nome": "Equipamento descolou",
+      "tipo": "nivel1",
+      "mascara": "Equipamento Descolou"
+    },
+    {
+      "nome": "Sem acesso remoto",
+      "tipo": "nivel1",
+      "mascara": "Sem Acesso Remoto"
+    },
+    {
+      "nome": "LOS",
+      "tipo": "nivel2",
+      "mascara": "LOS"
+    },
+    {
+      "nome": "PON piscando",
+      "tipo": "nivel2",
+      "mascara": "PON Piscando"
+    },
+    {
+      "nome": "Sinal alto",
+      "tipo": "nivel2",
+      "mascara": "Sinal Alto"
+    },
+    {
+      "nome": "Fibra baixa",
+      "tipo": "fibrabaixa",
+      "mascara": "Fibra Baixa - SAC Suporte"
+    },
+    {
+      "nome": "Fibra danificada",
+      "tipo": "fibradanificada",
+      "mascara": "Fibra Danificada - SAC Suporte"
+    },
+    {
+      "nome": "Conector danificado",
+      "tipo": "conector",
+      "mascara": "Comodato Danificado - SAC Suporte"
+    },
+    {
+      "nome": "Troca de fonte",
+      "tipo": "trocafonte",
+      "mascara": "Comodato Danificado - SAC Suporte"
+    },
+    {
+      "nome": "Roteador danificado",
+      "tipo": "trocaroteador",
+      "mascara": "Comodato Danificado - SAC Suporte"
+    },
+    {
+      "nome": "ONU danificada",
+      "tipo": "trocaonu",
+      "mascara": "Comodato Danificado - SAC Suporte"
+    },
+    {
+      "nome": "Troca de equipamentos",
+      "tipo": "trocaequip",
+      "mascara": "Comodato Danificado - SAC Suporte"
+    },
+    {
+      "nome": "Problema na rede mesh",
+      "tipo": "mesh",
+      "mascara": "Suporte Rede Mesh - SAC Suporte"
+    },
+    {
+      "nome": "Outros",
+      "tipo": "nivel1",
+      "mascara": "Outros - SAC Suporte"
+    }
+  ],
+  "FLUXO": [
+    {
+      "situacao": "Cliente inativo ou não está no endereço",
+      "prazo": "",
+      "proxima": "preventiva",
+      "mascara": "LOS, PON Piscando ou Outros",
+      "nota": "LOS: alarme no OLTZ ou vídeo/verbalizou LOS · PON: vídeo/verbalizou PON piscando · Nenhum dos dois: Outros"
+    },
+    {
+      "situacao": "Configuração no SAC realizada",
+      "prazo": "Contato em até 15 dias",
+      "proxima": "nivel1",
+      "mascara": "Rechamada"
+    },
+    {
+      "situacao": "Configuração no SAC realizada",
+      "prazo": "Contato a partir de 16 dias (até 60)",
+      "proxima": "nivel1",
+      "mascara": "Rechamada 60"
+    },
+    {
+      "situacao": "O.S Nível I realizada",
+      "prazo": "De 3 a 60 dias",
+      "proxima": "nivel1",
+      "mascara": "Rechamada Externo",
+      "excecao": "Até 2 dias: Suporte Recente. Rechamada Externo, Instalou Recente e Sem Acesso Remoto seguem suas próprias regras"
+    },
+    {
+      "situacao": "O.S de Rechamada Externo realizada",
+      "prazo": "Até 60 dias",
+      "proxima": "fiscal",
+      "mascara": "Fiscalização - SAC Suporte"
+    },
+    {
+      "situacao": "O.S Nível I – Sem Acesso Remoto realizada",
+      "prazo": "Até 60 dias",
+      "proxima": "fiscal",
+      "mascara": "Fiscalização - SAC Suporte"
+    },
+    {
+      "situacao": "O.S Preventiva realizada",
+      "prazo": "De 3 a 60 dias",
+      "proxima": "fiscal",
+      "mascara": "Fiscalização - SAC Suporte",
+      "excecao": "Até 2 dias: abra O.S Suporte Recente"
+    },
+    {
+      "situacao": "O.S de equipamento danificado",
+      "prazo": "De 3 a 60 dias",
+      "nota": "Conector, fonte, roteador, ONU ou troca de equipamentos (máscara Comodato Danificado)",
+      "proxima": "fiscal",
+      "mascara": "Fiscalização - SAC Suporte",
+      "excecao": "Até 2 dias: abra O.S Suporte Recente"
+    },
+    {
+      "situacao": "O.S Fibra Baixa ou Fibra Danificada realizada",
+      "prazo": "De 3 a 60 dias",
+      "proxima": "fiscal",
+      "mascara": "Fiscalização - SAC Suporte",
+      "excecao": "Até 2 dias: abra O.S Suporte Recente"
+    },
+    {
+      "situacao": "O.S de Fiscalização realizada",
+      "prazo": "Até 60 dias",
+      "proxima": "fiscal",
+      "mascara": "Fiscalização - SAC Suporte"
+    },
+    {
+      "situacao": "O.S de Ativação realizada",
+      "prazo": "Há até 3 dias",
+      "proxima": "ativacao",
+      "mascara": "Conforme o problema"
+    },
+    {
+      "situacao": "Cliente ativou em até 2 meses",
+      "prazo": "",
+      "nota": "Sinal OK",
+      "proxima": "nivel1",
+      "mascara": "Instalou Recente",
+      "excecao": "Se a ativação foi há até 3 dias, abra Ativação Recente"
+    },
+    {
+      "situacao": "O.S de Ativação Recente realizada",
+      "prazo": "Até 60 dias",
+      "proxima": "nivel1",
+      "mascara": "Instalou Recente"
+    },
+    {
+      "situacao": "O.S de Instalou Recente realizada",
+      "prazo": "Até 60 dias",
+      "proxima": "fiscal",
+      "mascara": "Fiscalização - SAC Suporte"
+    },
+    {
+      "situacao": "Cliente recebeu suporte",
+      "prazo": "Há até 2 dias",
+      "proxima": "recente",
+      "mascara": "Rechamada Externo - SAC Suporte",
+      "excecao": "Se a última O.S foi Fiscalização, abra Fiscalização"
+    },
+    {
+      "situacao": "O.S Suporte Recente realizada",
+      "prazo": "Até 60 dias",
+      "proxima": "fiscal",
+      "mascara": "Fiscalização - SAC Suporte"
+    },
+    {
+      "situacao": "Suporte Nível II realizado",
+      "prazo": "Até 60 dias",
+      "proxima": "fiscal",
+      "mascara": "Fiscalização - SAC Suporte"
+    },
+    {
+      "situacao": "Mudança de endereço realizada",
+      "prazo": "Até 60 dias",
+      "proxima": "fiscal",
+      "mascara": "Fiscalização - SAC Suporte"
+    },
+    {
+      "situacao": "Mudança de local realizada",
+      "prazo": "Até 60 dias",
+      "proxima": "fiscal",
+      "mascara": "Fiscalização - SAC Suporte"
+    },
+    {
+      "situacao": "Suporte Rede Mesh realizado",
+      "prazo": "Até 60 dias",
+      "proxima": "mesh",
+      "mascara": "Suporte Rede Mesh - SAC Suporte",
+      "excecao": "Se a última O.S foi Suporte Retenção, abra Suporte Retenção"
+    },
+    {
+      "situacao": "Cliente cita cancelamento indiretamente / humor",
+      "prazo": "",
+      "proxima": "nivel1",
+      "mascara": "Propenso a Cancelamento"
+    },
+    {
+      "situacao": "O.S Nível I – Propenso a Cancelamento realizada",
+      "prazo": "Até 60 dias",
+      "nota": "A próxima é sempre Retenção",
+      "proxima": "retencao",
+      "mascara": "Conforme o problema"
+    },
+    {
+      "situacao": "Cliente cita cancelamento",
+      "prazo": "",
+      "proxima": "retencao",
+      "mascara": "Conforme o problema"
+    },
+    {
+      "situacao": "Suporte Retenção realizado",
+      "prazo": "Até 60 dias",
+      "proxima": "retencao",
+      "mascara": "Conforme o problema",
+      "excecao": "Se a última O.S foi Ativação, abra Ativação Recente"
+    }
+  ],
+  "AJUDA_TIPOS": {
+    "nivel1": "Primeiro atendimento da maioria dos problemas e das rechamadas.",
+    "nivel2": "Problemas de sinal: LOS, PON piscando ou sinal alto.",
+    "ativacao": "Problema até 3 dias após a ativação.",
+    "retencao": "Cliente que pediu cancelamento ou já está na retenção.",
+    "recente": "Problema até 2 dias após um suporte.",
+    "fibrabaixa": "Problema identificado: fibra baixa.",
+    "preventiva": "Cliente inativo ou fora do endereço. LOS: alarme no OLTZ, vídeo ou relato. PON: vídeo ou relato. Sem vídeo e sem relato: Outros.",
+    "fibradanificada": "Fibra do cliente danificada.",
+    "conector": "Equipamento do cliente danificado. Máscara: Comodato Danificado.",
+    "trocafonte": "Equipamento do cliente danificado. Máscara: Comodato Danificado.",
+    "trocaroteador": "Equipamento do cliente danificado. Máscara: Comodato Danificado.",
+    "trocaonu": "Equipamento do cliente danificado. Máscara: Comodato Danificado.",
+    "trocaequip": "Equipamento do cliente danificado. Máscara: Comodato Danificado.",
+    "fiscal": "Verificação após visita recente da equipe de campo.",
+    "mesh": "Problemas na rede mesh. Rede mesh volta para rede mesh."
+  },
+  "GLOSSARIO": [
+    [
+      "O.S",
+      "Ordem de Serviço: o registro do atendimento."
+    ],
+    [
+      "Máscara",
+      "O título da O.S (ex.: Lentidão, Rechamada 60)."
+    ],
+    [
+      "Rechamada",
+      "Cliente volta com o mesmo problema após um atendimento."
+    ],
+    [
+      "Rechamada Externo",
+      "Rechamada depois de uma visita da equipe de campo."
+    ],
+    [
+      "Configuração no SAC",
+      "Ajuste feito pelo SAC à distância, sem O.S."
+    ],
+    [
+      "Prazo de 60 dias",
+      "Passou de 60 dias da última O.S, o fluxo recomeça."
+    ],
+    [
+      "Cancelamento indireto",
+      "Cliente dá sinais, sem pedir. Ex.: “vou trocar de provedor”."
+    ],
+    [
+      "Cancelamento direto",
+      "Cliente pede para cancelar."
+    ]
+  ],
+  "MODELO_DESCRICAO": "*Problema do cliente : \n*Modelo dos equipamentos: \n*Disponibilidade:\n*Telefone:\n*Localização: \n*Protocolo ou Telefone:",
+  "MODELOS_MASCARA": {
+    "QUEDAS CONSTANTES": [
+      "*Problema do cliente : ",
+      "*Modelo dos equipamentos: ",
+      "*Disponibilidade:",
+      "*Telefone:",
+      "*Localização: ",
+      "*Protocolo ou Telefone:"
+    ],
+    "SEM CONEXÃO": [
+      "*Problema do cliente : ",
+      "*Modelo dos equipamentos: ",
+      "*Disponibilidade:",
+      "*Telefone:",
+      "*Localização: ",
+      "*Protocolo ou Telefone:"
+    ],
+    "OSCILAÇÃO": [
+      "*Problema do cliente : ",
+      "*Modelo dos equipamentos: ",
+      "*Disponibilidade:",
+      "*Telefone:",
+      "*Localização: ",
+      "*Protocolo ou Telefone:"
+    ],
+    "VELOCIDADE NÃO BATE": [
+      "*Problema do cliente : ",
+      "*Modelo dos equipamentos: ",
+      "*Disponibilidade:",
+      "*Telefone:",
+      "*Localização: ",
+      "*Protocolo ou Telefone:"
+    ],
+    "LENTIDÃO": [
+      "*Problema do cliente : “Ex: Cliente com dificuldade de acesso nas aplicações WhatsApp, Instagram e Youtube.”",
+      "*Modelo dos equipamentos : ",
+      "*Disponibilidade:",
+      "*Telefone:",
+      "*Localização: ",
+      "*Protocolo ou Telefone:"
+    ],
+    "RECHAMADA": [
+      "*Problema do cliente : ",
+      "*Modelo dos equipamentos : ",
+      "*Disponibilidade:",
+      "*Telefone:",
+      "*Localização: ",
+      "*Protocolo:"
+    ],
+    "RECHAMADA 60": [
+      "*Problema do cliente : ",
+      "*Modelo dos equipamentos : ",
+      "*Disponibilidade:",
+      "*Telefone:",
+      "*Localização: ",
+      "*Protocolo:"
+    ],
+    "RECHAMADA EXTERNO": [
+      "*Problema do cliente : ",
+      "*Modelo dos equipamentos : ",
+      "*Disponibilidade:",
+      "*Telefone:",
+      "*Localização: ",
+      "*Protocolo:"
+    ],
+    "EQUIPAMENTO DESCOLOU": [
+      "*Problema do cliente : ",
+      "*Modelo dos equipamentos: ",
+      "*Disponibilidade:",
+      "*Telefone:",
+      "*Localização: ",
+      "*Protocolo ou Telefone:"
+    ],
+    "OUTROS": [
+      "*Problema do cliente : ",
+      "*Modelo dos equipamentos: ",
+      "*Disponibilidade:",
+      "*Telefone:",
+      "*Localização: ",
+      "*Protocolo ou Telefone:"
+    ],
+    "INSTALOU RECENTE": [
+      "*Problema do cliente : ",
+      "*Modelo dos equipamentos: ",
+      "*Disponibilidade:",
+      "*Telefone:",
+      "*Localização: ",
+      "*Protocolo ou Telefone:"
+    ],
+    "PROPENSO A CANCELAMENTO": [
+      "*Problema do cliente : ",
+      "*Modelo dos equipamentos: ",
+      "*Disponibilidade:",
+      "*Telefone:",
+      "*Localização: ",
+      "*Protocolo ou Telefone:"
+    ],
+    "LOS": [
+      "*Modelo dos equipamentos: ",
+      "*Disponibilidade:",
+      "*Telefone:",
+      "*Localização: ",
+      "*Protocolo:"
+    ],
+    "PON PISCANDO": [
+      "*Modelo dos equipamentos: ",
+      "*Disponibilidade:",
+      "*Telefone:",
+      "*Localização: ",
+      "*Protocolo:"
+    ],
+    "SINAL ALTO": [
+      "*Problema do cliente: “REGISTRAR O SINAL NA DESCRIÇÃO”",
+      "*Modelo dos equipamentos : ",
+      "*Disponibilidade:",
+      "*Telefone:",
+      "*Localização: ",
+      "*Protocolo:"
+    ],
+    "SUPORTE REDE MESH": [
+      "*Problema do cliente : ",
+      "*Modelo dos equipamentos: ",
+      "*Disponibilidade:",
+      "*Telefone:",
+      "*Localização: ",
+      "*Protocolo ou Telefone:"
+    ],
+    "FISCALIZAÇÃO": [
+      "*Problema do cliente : ",
+      "*Modelo dos equipamentos: ",
+      "*Disponibilidade:",
+      "*Telefone:",
+      "*Localização: ",
+      "*Protocolo ou Telefone:"
+    ],
+    "COMODATO DANIFICADO": [
+      "*Problema do cliente: ",
+      "*Observação: Cliente ciente que a equipe realizará as verificações presencialmente no comodato danificado e verificará a possibilidade da cobrança.",
+      "*Modelo dos equipamentos: ",
+      "*Disponibilidade: ",
+      "*Telefone:",
+      "*Localização: ",
+      "*Protocolo ou Telefone: "
+    ],
+    "FIBRA DANIFICADA": [
+      "*Problema do cliente: ",
+      "*Observação: Cliente ciente que a equipe realizará as verificações presencialmente no comodato danificado e verificará a possibilidade da cobrança.",
+      "*Modelo dos equipamentos: ",
+      "*Disponibilidade: ",
+      "*Telefone:",
+      "*Localização: ",
+      "*Protocolo ou Telefone: "
+    ],
+    "SEM ACESSO REMOTO": [
+      "*Problema do cliente: ",
+      "*Modelo dos equipamentos: ",
+      "*Disponibilidade:",
+      "*Telefone:",
+      "*Localização: ",
+      "*Protocolo ou Telefone:"
+    ]
+  },
+  "MODELOS_POR_TIPO": {
+    "preventiva": {
+      "LOS": [
+        "*CLIENTE INATIVO (  ) OU CLIENTE NÃO ESTAVA NO ENDEREÇO (  )",
+        "*ENVIOU VÍDEO OU VERBALIZOU LOS : (  ) SIM (  ) NÃO",
+        "*ALARME NO OLTZ: ",
+        "*Modelo dos equipamentos : ",
+        "*Disponibilidade:",
+        "*Telefone:",
+        "*Localização: ",
+        "*Protocolo:"
+      ],
+      "PON PISCANDO": [
+        "*CLIENTE INATIVO (  ) OU CLIENTE NÃO ESTAVA NO ENDEREÇO (  )",
+        "*ENVIOU VÍDEO OU VERBALIZOU PON : (  ) SIM (  ) NÃO",
+        "*ALARME NO OLTZ:",
+        "*Modelo dos equipamentos : ",
+        "*Disponibilidade:",
+        "*Telefone:",
+        "*Localização: ",
+        "*Protocolo:"
+      ],
+      "OUTROS": [
+        "*CLIENTE INATIVO (  ) OU CLIENTE NÃO ESTAVA NO ENDEREÇO (  )",
+        "*CLIENTE LOCALIZADO NO OLTZ (  ) SIM (  ) NÃO",
+        "*CLIENTE VIA RÁDIO : (  ) SIM  (  ) NÃO",
+        "*Problema do cliente: ",
+        "*Modelo dos equipamentos: ",
+        "*Disponibilidade: ",
+        "*Telefone:",
+        "*Localização: ",
+        "*Protocolo ou Telefone:"
+      ]
+    }
+  },
+  "REGRAS": [
+    {
+      "id": "cancelamento-direto",
+      "se": {
+        "cancelamento": "direto"
+      },
+      "entao": {
+        "tipo": "retencao",
+        "mascara": null,
+        "motivo": "Cliente pediu cancelamento."
+      }
+    },
+    {
+      "id": "preventiva-los",
+      "se": {
+        "preventiva": "los"
+      },
+      "entao": {
+        "tipo": "preventiva",
+        "mascara": "LOS",
+        "motivo": "Cliente inativo ou fora do endereço, com LOS."
+      }
+    },
+    {
+      "id": "preventiva-pon",
+      "se": {
+        "preventiva": "pon"
+      },
+      "entao": {
+        "tipo": "preventiva",
+        "mascara": "PON Piscando",
+        "motivo": "Cliente inativo ou fora do endereço, com PON piscando."
+      }
+    },
+    {
+      "id": "preventiva-outros",
+      "se": {
+        "preventiva": "qualquer"
+      },
+      "entao": {
+        "tipo": "preventiva",
+        "mascara": "Outros - SAC Suporte",
+        "motivo": "Cliente inativo ou fora do endereço, sem vídeo nem relato."
+      }
+    },
+    {
+      "id": "mais60-cancelamento-indireto",
+      "se": {
+        "diasMin": 61,
+        "cancelamento": "indireto"
+      },
+      "entao": {
+        "tipo": "nivel1",
+        "mascara": "Propenso a Cancelamento",
+        "motivo": "Passou de 60 dias e o cliente deu a entender que quer cancelar."
+      }
+    },
+    {
+      "id": "mais60-problema-atual",
+      "se": {
+        "diasMin": 61
+      },
+      "entao": {
+        "doProblema": true,
+        "motivo": "Passou de 60 dias: a O.S segue o problema atual ({problema})."
+      }
+    },
+    {
+      "id": "propenso-cancelamento",
+      "se": {
+        "tipo": [
+          "nivel1"
+        ],
+        "mascara": [
+          "Propenso a Cancelamento"
+        ]
+      },
+      "entao": {
+        "tipo": "retencao",
+        "mascara": null,
+        "motivo": "Última O.S foi Propenso a Cancelamento."
+      }
+    },
+    {
+      "id": "ativacao-ate-3-dias",
+      "se": {
+        "tipo": [
+          "instalacao"
+        ],
+        "diasMax": 3
+      },
+      "entao": {
+        "tipo": "ativacao",
+        "mascara": null,
+        "motivo": "Ativação há até 3 dias."
+      }
+    },
+    {
+      "id": "retencao",
+      "se": {
+        "tipo": [
+          "retencao"
+        ]
+      },
+      "entao": {
+        "tipo": "retencao",
+        "mascara": null,
+        "motivo": "Última O.S foi Retenção."
+      }
+    },
+    {
+      "id": "rede-mesh",
+      "se": {
+        "tipo": [
+          "mesh"
+        ]
+      },
+      "entao": {
+        "tipo": "mesh",
+        "mascara": "Suporte Rede Mesh - SAC Suporte",
+        "motivo": "Última O.S foi Rede Mesh."
+      }
+    },
+    {
+      "id": "fiscalizacao",
+      "se": {
+        "tipo": [
+          "fiscal"
+        ]
+      },
+      "entao": {
+        "tipo": "fiscal",
+        "mascara": "Fiscalização - SAC Suporte",
+        "motivo": "Última O.S foi Fiscalização."
+      }
+    },
+    {
+      "id": "mudanca-ou-nivel2",
+      "se": {
+        "tipo": [
+          "mudancaendereco",
+          "mudancalocal",
+          "nivel2"
+        ]
+      },
+      "entao": {
+        "tipo": "fiscal",
+        "mascara": "Fiscalização - SAC Suporte",
+        "motivo": "Última O.S foi {tipo}."
+      }
+    },
+    {
+      "id": "cancelamento-indireto",
+      "se": {
+        "cancelamento": "indireto"
+      },
+      "entao": {
+        "tipo": "nivel1",
+        "mascara": "Propenso a Cancelamento",
+        "motivo": "Cliente deu a entender que quer cancelar."
+      }
+    },
+    {
+      "id": "configuracao-sac-ate-15",
+      "se": {
+        "tipo": [
+          "configsac"
+        ],
+        "diasMax": 15
+      },
+      "entao": {
+        "tipo": "nivel1",
+        "mascara": "Rechamada",
+        "motivo": "Configuração no SAC há até 15 dias."
+      }
+    },
+    {
+      "id": "configuracao-sac-16-a-60",
+      "se": {
+        "tipo": [
+          "configsac"
+        ]
+      },
+      "entao": {
+        "tipo": "nivel1",
+        "mascara": "Rechamada 60",
+        "motivo": "Configuração no SAC entre 16 e 60 dias."
+      }
+    },
+    {
+      "id": "ativacao-recente",
+      "se": {
+        "tipo": [
+          "ativacao"
+        ]
+      },
+      "entao": {
+        "tipo": "nivel1",
+        "mascara": "Instalou Recente",
+        "motivo": "Última O.S foi Ativação Recente."
+      }
+    },
+    {
+      "id": "sem-acesso-remoto",
+      "se": {
+        "tipo": [
+          "nivel1"
+        ],
+        "mascara": [
+          "Sem Acesso Remoto"
+        ]
+      },
+      "entao": {
+        "tipo": "fiscal",
+        "mascara": "Fiscalização - SAC Suporte",
+        "motivo": "Última O.S foi Sem Acesso Remoto."
+      }
+    },
+    {
+      "id": "suporte-ate-2-dias",
+      "se": {
+        "diasMax": 2
+      },
+      "entao": {
+        "tipo": "recente",
+        "mascara": "Rechamada Externo - SAC Suporte",
+        "motivo": "Suporte há até 2 dias."
+      }
+    },
+    {
+      "id": "preventiva-fibra-3-a-60",
+      "se": {
+        "tipo": [
+          "preventiva",
+          "fibrabaixa",
+          "fibradanificada"
+        ]
+      },
+      "entao": {
+        "tipo": "fiscal",
+        "mascara": "Fiscalização - SAC Suporte",
+        "motivo": "Última O.S foi {tipo} há mais de 2 dias."
+      }
+    },
+    {
+      "id": "equipamento-danificado-3-a-60",
+      "se": {
+        "grupo": "equip"
+      },
+      "entao": {
+        "tipo": "fiscal",
+        "mascara": "Fiscalização - SAC Suporte",
+        "motivo": "Última O.S foi {tipo} há mais de 2 dias."
+      }
+    },
+    {
+      "id": "ativacao-4-a-60",
+      "se": {
+        "tipo": [
+          "instalacao"
+        ]
+      },
+      "entao": {
+        "tipo": "nivel1",
+        "mascara": "Instalou Recente",
+        "motivo": "Ativação entre 4 e 60 dias."
+      }
+    },
+    {
+      "id": "suporte-recente",
+      "se": {
+        "tipo": [
+          "recente"
+        ]
+      },
+      "entao": {
+        "tipo": "fiscal",
+        "mascara": "Fiscalização - SAC Suporte",
+        "motivo": "Última O.S foi Suporte Recente."
+      }
+    },
+    {
+      "id": "rechamada-externo",
+      "se": {
+        "tipo": [
+          "nivel1"
+        ],
+        "mascara": [
+          "Rechamada Externo"
+        ]
+      },
+      "entao": {
+        "tipo": "fiscal",
+        "mascara": "Fiscalização - SAC Suporte",
+        "motivo": "Última O.S foi Rechamada Externo."
+      }
+    },
+    {
+      "id": "instalou-recente",
+      "se": {
+        "tipo": [
+          "nivel1"
+        ],
+        "mascara": [
+          "Instalou Recente"
+        ]
+      },
+      "entao": {
+        "tipo": "fiscal",
+        "mascara": "Fiscalização - SAC Suporte",
+        "motivo": "Última O.S foi Instalou Recente."
+      }
+    },
+    {
+      "id": "nivel1-3-a-60",
+      "se": {
+        "tipo": [
+          "nivel1"
+        ]
+      },
+      "entao": {
+        "tipo": "nivel1",
+        "mascara": "Rechamada Externo",
+        "motivo": "Última O.S foi Nível I há mais de 2 dias."
+      }
+    },
+    {
+      "id": "padrao",
+      "se": {},
+      "entao": {
+        "tipo": "nivel1",
+        "mascara": null,
+        "motivo": "Nenhuma regra especial: use a máscara do problema."
+      }
+    }
+  ]
+}

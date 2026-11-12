@@ -51,14 +51,25 @@ Depois, remova das máquinas a versão instalada manualmente ("Carregar sem comp
 
 ---
 
-## Como publicar uma atualização
+## Como as regras chegam aos operadores
 
-1. Edite os arquivos em `extensao/` (fluxo e máscaras ficam em `data.js`, regras em `regras.js`).
-2. **Aumente a versão** em `extensao/manifest.json` (ex.: `1.13.0` → `1.13.1`).
-   Sem isso, a publicação é bloqueada, porque o Chrome só atualiza quando a versão sobe.
-3. Salve na branch `main`. A publicação roda sozinha em poucos minutos (aba **Actions**).
+Toda vez que o operador abre a extensão, ela lê o arquivo **`fluxo.json`** publicado no GitHub Pages. Por isso, **regras, tipos de O.S, máscaras e textos se atualizam sozinhos**, mesmo na instalação manual ("Carregar sem compactação").
 
-As máquinas recebem a nova versão automaticamente. O Chrome verifica a cada poucas horas e também ao abrir o navegador.
+- Sem internet, a extensão usa a última cópia salva no computador e avisa no rodapé.
+- O rodapé mostra a versão das regras em uso (ex.: "Regras atualizadas · versão 2026-11-12.1").
+
+### Mudar uma regra, máscara ou texto
+1. Abra `extensao/fluxo.json` no GitHub e clique no lápis (**Edit**).
+2. Faça a alteração e **mude o campo `"versao"`** no início do arquivo (ex.: `2026-11-12.1` → `2026-11-13.1`).
+3. Clique em **Commit changes**. Em até 10 minutos, os operadores já recebem a mudança ao abrir a extensão.
+
+A publicação confere o arquivo antes de enviar. Se houver erro de formatação (vírgula ou aspas faltando) ou um tipo de O.S inexistente, ela fica **vermelha** e mostra o problema. Nesse caso, nada chega aos operadores.
+
+### Mudar a tela ou o código da extensão
+Alterações em `popup.html`, `popup.js`, `popup.css`, `motor.js`, `loader.js` ou `manifest.json` **não** chegam sozinhas na instalação manual. Aumente a `version` no `manifest.json` e reinstale a pasta nas máquinas (ou use a instalação pela política, abaixo).
+
+### Instalação pela política (opcional)
+Se as máquinas forem gerenciadas pela TI, a extensão inteira, incluindo a tela, também pode se atualizar sozinha. Use o ID e os arquivos `.reg` mostrados na página do GitHub Pages, por GPO ou Chrome Enterprise Core.
 
 ---
 

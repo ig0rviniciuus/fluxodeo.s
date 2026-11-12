@@ -190,3 +190,8 @@ kbd { font: inherit; border: 1px solid var(--linha); border-radius: 3px; padding
 .sug-status.ok { background: var(--ativacao-bg); color: var(--ativacao); }
 .sug-status.ruim { background: var(--alerta-bg); color: var(--alerta); }
 .link-sug { display: block; margin: 10px auto 0; font-size: 11.5px; }
+
+.status-dados { margin: 0 0 3px; font-size: 11px; font-weight: 600; }
+.status-dados.ok { color: var(--ativacao); }
+.status-dados.alerta { color: var(--alerta); }
+.status-dados.ruim { color: var(--retencao); }
