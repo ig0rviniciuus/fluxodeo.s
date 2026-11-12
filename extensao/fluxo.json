@@ -1,5 +1,5 @@
 {
-  "versao": "2026-11-12.1",
+  "versao": "2026-11-12.3",
   "TIPOS_OS": {
     "nivel1": {
       "nome": "O.S Nível I",
@@ -328,7 +328,7 @@
     },
     {
       "situacao": "O.S de Ativação realizada",
-      "prazo": "Há até 3 dias",
+      "prazo": "Há até 2 dias",
       "proxima": "ativacao",
       "mascara": "Conforme o problema"
     },
@@ -338,7 +338,7 @@
       "nota": "Sinal OK",
       "proxima": "nivel1",
       "mascara": "Instalou Recente",
-      "excecao": "Se a ativação foi há até 3 dias, abra Ativação Recente"
+      "excecao": "Se a ativação foi há até 2 dias, abra Ativação Recente"
     },
     {
       "situacao": "O.S de Ativação Recente realizada",
@@ -420,7 +420,7 @@
   "AJUDA_TIPOS": {
     "nivel1": "Primeiro atendimento da maioria dos problemas e das rechamadas.",
     "nivel2": "Problemas de sinal: LOS, PON piscando ou sinal alto.",
-    "ativacao": "Problema até 3 dias após a ativação.",
+    "ativacao": "Problema até 2 dias após a ativação.",
     "retencao": "Cliente que pediu cancelamento ou já está na retenção.",
     "recente": "Problema até 2 dias após um suporte.",
     "fibrabaixa": "Problema identificado: fibra baixa.",
@@ -750,17 +750,17 @@
       }
     },
     {
-      "id": "ativacao-ate-3-dias",
+      "id": "ativacao-ate-2-dias",
       "se": {
         "tipo": [
           "instalacao"
         ],
-        "diasMax": 3
+        "diasMax": 2
       },
       "entao": {
         "tipo": "ativacao",
         "mascara": null,
-        "motivo": "Ativação há até 3 dias."
+        "motivo": "Ativação há até 2 dias."
       }
     },
     {
@@ -922,7 +922,7 @@
       }
     },
     {
-      "id": "ativacao-4-a-60",
+      "id": "ativacao-3-a-60",
       "se": {
         "tipo": [
           "instalacao"
@@ -931,7 +931,7 @@
       "entao": {
         "tipo": "nivel1",
         "mascara": "Instalou Recente",
-        "motivo": "Ativação entre 4 e 60 dias."
+        "motivo": "Ativação entre 3 e 60 dias."
       }
     },
     {
