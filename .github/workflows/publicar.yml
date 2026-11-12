@@ -26,7 +26,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - id: pages
         uses: actions/configure-pages@v5
@@ -35,11 +35,19 @@ jobs:
         env:
           CRX_PRIVATE_KEY: ${{ secrets.CRX_PRIVATE_KEY }}
         run: |
-          if [ -z "$CRX_PRIVATE_KEY" ]; then
-            echo "::error::Cadastre o segredo CRX_PRIVATE_KEY (veja o README, passo 2)."
-            exit 1
-          fi
-          printf '%s\n' "$CRX_PRIVATE_KEY" > chave.pem
+          node <<'JS'
+          const fs = require("fs");
+          const k = (process.env.CRX_PRIVATE_KEY || "").replace(/\r/g, "");
+          if (!k.trim()) { console.log("::error::Cadastre o segredo CRX_PRIVATE_KEY (veja o README)."); process.exit(1); }
+          const m = k.match(/-----BEGIN ([A-Z ]+)-----([\s\S]*?)-----END \1-----/);
+          if (!m) { console.log("::error::A chave em CRX_PRIVATE_KEY está sem as linhas BEGIN/END. Cadastre a chave inteira."); process.exit(1); }
+          const corpo = m[2].replace(/\s+/g, "");
+          const pem = "-----BEGIN " + m[1] + "-----\n" + corpo.match(/.{1,64}/g).join("\n") + "\n-----END " + m[1] + "-----\n";
+          try { require("crypto").createPrivateKey(pem); }
+          catch (e) { console.log("::error::A chave em CRX_PRIVATE_KEY está incompleta ou corrompida. Gere uma nova e cadastre de novo."); process.exit(1); }
+          fs.writeFileSync("chave.pem", pem);
+          console.log("Chave válida.");
+          JS
 
       - name: Montar, assinar e gerar arquivos de atualização
         env:
